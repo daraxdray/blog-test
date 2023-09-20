@@ -56,12 +56,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       
       const response = await fetch(`https://raw.githubusercontent.com/boma25/blog/main/data.json`);
       const result  = await response.json();
-    const allPosts = result['posts'];
-    
+        const allPosts = result['posts'];
       const post: Post = allPosts.find((el:Post)=> el.id == parseInt(`${id}`))
-      
-      // By returning { props: item }, the CharacterDetail component
-      // will receive `item` as a prop at build time
       return { props: { post } }
     } catch (err: any) {
       return { props: { errors: err.message } }
